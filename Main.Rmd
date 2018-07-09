@@ -5,12 +5,49 @@ date: "July 8, 2018"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=TRUE}
 knitr::opts_chunk$set(echo = TRUE)
+
+# load libraries
+library(knitr)
+library(XML)
+library(RCurl)
+library(stringr)
+
+# read knitr chunks
+read_chunk('Code/HarryPotter.R')
+
 ```
 
 ## Harry Potter cast
+IMDB has listings of full cast members for movies. Get Cast listings for movie - "Harry Potter and the Deathly Hallows: Part 2"
+Given URL - [Castings for Harry Potter and the Deathly Hallows: Part 2](http://www.imdb.com/title/tt1201607/fullcredits?ref_=tt_ql_1.)
 
+#### Data fetch from website
+
+```{r HP_fetchtable}
+```
+
+
+#### Tidying of web data
+
+Dataframe fetched has all the tables from the web page. Cast listings table is the 3rd table. We want to fetch 3rd table and then create a dataframe with only the columns of Actor and Character Names. 
+As part of cleanup of data below steps are taken - \
+- remove and rows with null/NA data \
+- give meaningful column names to the dataframe \
+- remove carriage returns or newline from the data \
+- replace multiple whitespaces with single whitespace to make it look better. \
+
+
+```{r HP_cleantable}
+```
+
+#### Display Data
+
+Now that we have required data, we want to split Actor Name as FirstName and Surname.
+
+```{r HP_display}
+```
 
 
 ## SportsBall
