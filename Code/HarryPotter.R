@@ -57,4 +57,6 @@ HP.casts$Surname <- lapply(HP.casts$Actor, function(x) tail(strsplit(as.characte
 #HP.casts$LastName <- strsplit(HP.casts$Actor, " ")[[-1]]
 
 HP.casts.display <- subset(HP.casts,select =c("FirstName","Surname","Character"))
-HP.casts.display
+
+# Present the first 10 rows of the cast list
+head(HP.casts.display,10)
