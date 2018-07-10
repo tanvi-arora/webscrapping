@@ -13,9 +13,15 @@ library(knitr)
 library(XML)
 library(RCurl)
 library(stringr)
+library(ggplot2)
+
+# source functions file
+source('Code/webextr_functions.R')
 
 # read knitr chunks
 read_chunk('Code/HarryPotter.R')
+read_chunk('Code/webextr_functions.R')
+read_chunk('Code/SportsBall.R')
 
 ```
 
@@ -51,3 +57,26 @@ Now that we have required data, we want to split Actor Name as FirstName and Sur
 
 
 ## SportsBall
+
+On the ESPN website, there are statistics of each NBA player. Use data for [San Antonio Spurs](http://www.espn.com/nba/team/stats/_/name/sa/san-antonio-spurs) and fetch data from the **Shooting Statistics** table.
+
+#### Data fetch from website
+
+```{r SB_fetchtable}
+```
+
+#### Tidying of web data
+
+Data received has a header record and Totals record. These are not part of the observation and will be removed from the dataset. Header record will be used as column names after renaming some of the columns by sustituting '%' with '_per'. Player column has Player name and his position, these will be seperated into two different columns : Playername and Playerposition.
+Data fetched from the website is factor , so we will convert names data to character and all the statistics will be converted to numeric so we can use them for visualization.
+
+
+```{r SB_cleantable}
+```
+
+#### Visualization
+
+Plot a bar chart that shows *Field Goals Percentage Per Game* for each person. 
+
+```{r SB_Plottable}
+```
